@@ -14,23 +14,6 @@ android {
     namespace 'com.yubico.yubikit_fido_demo'
     compileSdk 34
 
-    signingConfigs {
-        debug {
-            def keystoreFile = project.rootProject.file('webauthn-demo-debug.keystore')
-            if (keystoreFile.exists()) {
-                storeFile file(keystoreFile.toPath())
-            } else {
-                Properties properties = new Properties()
-                def propertiesFile = project.rootProject.file('local.properties')
-                if (propertiesFile.exists()) {
-                    properties.load(propertiesFile.newDataInputStream())
-                    storeFile file(properties.getProperty("key_path"))
-                }
-            }
-
-        }
-    }
-
     defaultConfig {
         applicationId "com.yubico.yubikit_fido_demo"
         minSdk 21
